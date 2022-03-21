@@ -10,6 +10,7 @@ class ArticleController
         $articles = $this->getArticles();
 
         // Load the view
+        
         require 'View/articles/index.php';
     }
 
@@ -17,7 +18,9 @@ class ArticleController
     private function getArticles()
     {
         // TODO: prepare the database connection
+        
         // Note: you might want to use a re-usable databaseManager class - the choice is yours
+        
         // TODO: fetch all articles as $rawArticles (as a simple array)
         $rawArticles = [];
 
