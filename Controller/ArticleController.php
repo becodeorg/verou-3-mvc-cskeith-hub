@@ -48,12 +48,13 @@ class ArticleController
     public function show($articleId)
     {
        $article = $this->databaseManager->connection
-       ->query("SELECT 'title', 'description', 'publishDate' FROM articles WHERE id = ('$articleId')" )
+       ->query("SELECT 'title', 'description', 'publishDate' FROM articles WHERE id = ('$articleId')")
        ->fetch();
        echo '<pre>';
         print_r($article);
         echo '</pre>';
        return $article;
+       require 'View/articles/show.php';
        
 
     }
