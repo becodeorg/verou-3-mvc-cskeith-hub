@@ -44,7 +44,7 @@ switch ($page) {
     case 'articles-show':
         // TODO: detail page
         (new ArticleController($databaseManager))->show($articleId);
-        require 'View/articles/show.php';
+        break;
     case 'home':
     default:
         (new HomepageController())->index();

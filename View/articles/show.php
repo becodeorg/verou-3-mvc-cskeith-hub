@@ -3,9 +3,11 @@
 <?php // Use any data loaded in the controller here ?>
 
 <section>
-    
+    <?php
+    var_dump($article);
+    ?>
     <h1><?= $article->title ?></h1>
-    <p><?= $article->formatPublishDate() ?></p>
+    <!-- <p><?= $article->formatPublishDate() ?></p> -->
     <p><?= $article->description ?></p>
 
     <?php // TODO: links to next and previous ?>
