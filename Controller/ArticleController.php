@@ -39,9 +39,6 @@ class ArticleController
             // We are converting an article from a "dumb" array to a much more flexible class
             $articles[] = new Article($rawArticle['id'],$rawArticle['title'], $rawArticle['description'], $rawArticle['publishDate']);
         }
-        echo '<pre>';
-        print_r($articles);
-        echo '</pre>';
         return $articles;
     }
 
@@ -51,10 +48,7 @@ class ArticleController
        ->query("SELECT * FROM articles WHERE id = ('$articleId')")
        ->fetch();
        
-        $article = new Article($result['id'], $result['title'], $result['description'], $result['publishDate']);
-    //    echo '<pre>';
-    //     print_r($article);
-    //     echo '</pre>';
+       $article = new Article($result['id'], $result['title'], $result['description'], $result['publishDate']);
        require 'View/articles/show.php';
     }
 }

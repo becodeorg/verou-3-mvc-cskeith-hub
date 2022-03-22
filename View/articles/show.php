@@ -3,16 +3,13 @@
 <?php // Use any data loaded in the controller here ?>
 
 <section>
-    <?php
-    var_dump($article);
-    ?>
     <h1><?= $article->title ?></h1>
-    <!-- <p><?= $article->formatPublishDate() ?></p> -->
+    <p><?= $article->formatPublishDate() ?></p>
     <p><?= $article->description ?></p>
 
     <?php // TODO: links to next and previous ?>
-    <a href="#">Previous article</a>
-    <a href="#">Next article</a>
+    <a href="index.php?page=articles-show&articleId=<?=  $article->id - 1   ?>">Previous article</a>
+    <a href="index.php?page=articles-show&articleId=<?=  $article->id + 1   ?>">Next article</a>
 </section>
 
 <?php require 'View/includes/footer.php'?>
