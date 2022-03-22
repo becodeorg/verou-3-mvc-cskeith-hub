@@ -9,13 +9,13 @@
 
     <?php // TODO: links to next and previous ?>
     <p>
-        <?= $article->nextPage($articleId)?>
-        <a href="index.php?page=articles-show&articleId=<?=  $article->id   ?>">Next article</a>
+        <?= $article->nextPage()?>
+        <a href="index.php?page=articles-show&articleId=<?=  $article->nextPage()  ?>">Next article</a>
     </p>
 
     <p>
-        <?= $article->previousPage($articleId)?>   
-        <a href="index.php?page=articles-show&articleId=<?=  $article->id  ?>">Previous article</a>
+        <?= $article->previousPage()?>   
+        <a href="index.php?page=articles-show&articleId=<?=  $article->previousPage()  ?>">Previous article</a>
     </p>
 
     

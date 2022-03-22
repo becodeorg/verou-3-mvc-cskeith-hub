@@ -8,13 +8,15 @@ class Article
     public string $title;
     public ?string $description;
     public ?string $publishDate;
+    public int $totalArticles;
 
-    public function __construct(int $id,string $title, ?string $description, ?string $publishDate)
+    public function __construct(int $id,string $title, ?string $description, ?string $publishDate, int $totalArticles)
     {
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
         $this->publishDate = $publishDate;
+        $this->totalArticles = $totalArticles;
     }
 
     public function formatPublishDate($format = 'DD-MM-YYYY')
@@ -23,21 +25,27 @@ class Article
     }
     
     // TODO Pass $article to  nextPage function
-    public function nextPage($articleId)
+    public function nextPage()
     {
-        if($_GET['articleId'] === $articleId)
+        $count = $this->id;
+        if($count === $this->totalArticles)
         {
-            echo "Hello Next";
+            return 1;
         }
-        
+        return ++$count;
     }
     // TODO Pass $article to  previousPage function
-    public function previousPage($articleId)
-    {
-        if($_GET['articleId'] === $articleId)
+    public function previousPage()
+    {   
+        $count = $this->id;
+        if($count === $this->totalArticles)
         {
-            echo "Hello previous";
+            return --$count;
         }
-        
+        elseif($count === 1)
+        {
+            return $this->totalArticles;
+        }
+        return 1;
     }
 }

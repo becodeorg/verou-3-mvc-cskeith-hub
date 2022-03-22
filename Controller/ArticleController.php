@@ -37,19 +37,23 @@ class ArticleController
         $articles = [];
         foreach ($rawArticles as $rawArticle) {
             // We are converting an article from a "dumb" array to a much more flexible class
-            $articles[] = new Article($rawArticle['id'],$rawArticle['title'], $rawArticle['description'], $rawArticle['publishDate']);
+            $articles[] = new Article($rawArticle['id'],$rawArticle['title'], $rawArticle['description'], $rawArticle['publishDate'], count($rawArticles));
         }
         return $articles;
     }
 
     public function show($articleId)
     {
+        $rawArticles = $this->databaseManager->connection
+        ->query("SELECT * FROM articles ")
+        ->fetchAll();
+
        $result = $this->databaseManager->connection
        ->query("SELECT * FROM articles WHERE id = ('$articleId')")
        ->fetch();
        
-       $article = new Article($result['id'], $result['title'], $result['description'], $result['publishDate']);
+       $article = new Article($result['id'], $result['title'], $result['description'], $result['publishDate'], count($rawArticles));
        require 'View/articles/show.php';
     }
-    
+
 }
