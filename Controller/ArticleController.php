@@ -51,4 +51,5 @@ class ArticleController
        $article = new Article($result['id'], $result['title'], $result['description'], $result['publishDate']);
        require 'View/articles/show.php';
     }
+    
 }

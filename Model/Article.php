@@ -21,4 +21,23 @@ class Article
     {
         // TODO: return the date in the required format
     }
+    
+    // TODO Pass $article to  nextPage function
+    public function nextPage($articleId)
+    {
+        if($_GET['articleId'] === $articleId)
+        {
+            echo "Hello Next";
+        }
+        
+    }
+    // TODO Pass $article to  previousPage function
+    public function previousPage($articleId)
+    {
+        if($_GET['articleId'] === $articleId)
+        {
+            echo "Hello previous";
+        }
+        
+    }
 }
