@@ -19,9 +19,12 @@ class Article
         $this->totalArticles = $totalArticles;
     }
 
-    public function formatPublishDate($format = 'DD-MM-YYYY')
+    public function formatPublishDate()
     {
         // TODO: return the date in the required format
+        $date = $this->publishDate;
+        $newDate = date("d-m-y", strtotime($date));
+        echo $newDate;
     }
     
     // TODO Pass $article to  nextPage function
