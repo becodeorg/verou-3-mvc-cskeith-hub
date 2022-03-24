@@ -37,7 +37,7 @@ class ArticleController
         $articles = [];
         foreach ($rawArticles as $rawArticle) {
             // We are converting an article from a "dumb" array to a much more flexible class
-            $articles[] = new Article($rawArticle['id'],$rawArticle['title'], $rawArticle['description'], $rawArticle['publishDate'], count($rawArticles));
+            $articles[] = new Article($rawArticle['id'],$rawArticle['title'], $rawArticle['description'], $rawArticle['publishDate'], count($rawArticles), $rawArticle['author']);
         }
         return $articles;
     }
@@ -52,7 +52,7 @@ class ArticleController
        ->query("SELECT * FROM articles WHERE id = ('$articleId')")
        ->fetch();
        
-       $article = new Article($result['id'], $result['title'], $result['description'], $result['publishDate'], count($rawArticles));
+       $article = new Article($result['id'], $result['title'], $result['description'], $result['publishDate'], count($rawArticles), $result['author']);
        require 'View/articles/show.php';
     }
 

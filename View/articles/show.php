@@ -6,6 +6,8 @@
     <h1><?= $article->title ?></h1>
     <p><?= $article->formatPublishDate() ?></p>
     <p><?= $article->description ?></p>
+    <p><?= $article->author() ?></p>
+
     <?php // TODO: links to next and previous ?>
     <p>
         <a href="index.php?page=articles-show&articleId=<?=  $article->nextPage()  ?>">Next article</a>

@@ -9,14 +9,16 @@ class Article
     public ?string $description;
     public ?string $publishDate;
     public int $totalArticles;
+    public string $author;
 
-    public function __construct(int $id,string $title, ?string $description, ?string $publishDate, int $totalArticles)
+    public function __construct(int $id,string $title, ?string $description, ?string $publishDate, int $totalArticles, string $author)
     {
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
         $this->publishDate = $publishDate;
         $this->totalArticles = $totalArticles;
+        $this->author = $author;
     }
 
     public function formatPublishDate()
@@ -50,5 +52,12 @@ class Article
             return $this->totalArticles;
         }
         return 1;
+    }
+
+    public function author()
+    {
+        $author = $this->author;
+
+        return $author;
     }
 }
