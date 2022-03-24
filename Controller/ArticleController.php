@@ -37,7 +37,7 @@ class ArticleController
         $articles = [];
         foreach ($rawArticles as $rawArticle) {
             // We are converting an article from a "dumb" array to a much more flexible class
-            $articles[] = new Article($rawArticle['id'],$rawArticle['title'], $rawArticle['description'], $rawArticle['publishDate'], count($rawArticles), $rawArticle['author']);
+            $articles[] = new Article($rawArticle['id'], $rawArticle['title'], $rawArticle['description'], $rawArticle['publishDate'], $rawArticle['author']);
         }
         return $articles;
     }
@@ -45,15 +45,33 @@ class ArticleController
     public function show($articleId)
     {
         $rawArticles = $this->databaseManager->connection
-        ->query("SELECT * FROM articles ")
+        ->query("SELECT * FROM articles")
         ->fetchAll();
 
        $result = $this->databaseManager->connection
-       ->query("SELECT * FROM articles WHERE id = ('$articleId')")
+       ->query("SELECT * FROM articles WHERE id = ('$articleId') ")
        ->fetch();
        
-       $article = new Article($result['id'], $result['title'], $result['description'], $result['publishDate'], count($rawArticles), $result['author']);
+       $article = new Article($result['id'], $result['title'], $result['description'], $result['publishDate'], $result['author']);
        require 'View/articles/show.php';
     }
+
+    private function nextArticle($articleId)
+    {
+
+        $result = $this->databaseManager->connection
+        ->query("SELECT id From articles WHERE id > $articleId ORDER BY id LIMIT 1")
+        ->fetch();
+        
+
+    }
+
+    private function previousArticle($articleId)
+    {
+        $sql = "SELECT id From articles WHERE id < :id ORDER BY id DESC limit 1";
+        
+        $stmt->bindParam(":id", $articleId);
+    }
+
 
 }
