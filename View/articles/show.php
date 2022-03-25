@@ -10,7 +10,7 @@
 
     <?php // TODO: links to next and previous ?>
     <p>
-        <a href="index.php?page=articles-show&articleId=<?=  $article->nextPage()  ?>">Next article</a>
+        <a href="index.php?page=articles-show&articleId=<?=  $nextArticle->nextPage() ?>">Next article</a>
     </p>
     <p> 
         <a href="index.php?page=articles-show&articleId=<?=  $article->previousPage()  ?>">Previous article</a>

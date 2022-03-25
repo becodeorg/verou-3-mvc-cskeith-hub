@@ -28,8 +28,9 @@ class Article
     }
     
     // TODO Pass $article to  nextPage function
-    public function nextPage()
+    public function nextPage($nextArticle)
     {
+        $next = $nextArticle;
         
     }
     // TODO Pass $article to  previousPage function

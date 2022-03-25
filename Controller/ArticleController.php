@@ -56,22 +56,28 @@ class ArticleController
        require 'View/articles/show.php';
     }
 
-    private function nextArticle($articleId)
+    public function nextArticle($articleId)
     {
 
         $result = $this->databaseManager->connection
         ->query("SELECT id From articles WHERE id > $articleId ORDER BY id LIMIT 1")
         ->fetch();
-        
+        $nextArticle = new Article($result['id'], $result['title'], $result['description'], $result['publishDate'], $result['author']);
+        echo '<pre>';
+        print_r($nextArticle);
+        echo '</pre>';
+        require 'View/articles/show.php';
 
     }
 
-    private function previousArticle($articleId)
-    {
-        $sql = "SELECT id From articles WHERE id < :id ORDER BY id DESC limit 1";
+   
+
+    // private function previousArticle($articleId)
+    // {
+    //     $sql = "SELECT id From articles WHERE id < :id ORDER BY id DESC limit 1";
         
-        $stmt->bindParam(":id", $articleId);
-    }
+    //     $stmt->bindParam(":id", $articleId);
+    // }
 
 
 }
